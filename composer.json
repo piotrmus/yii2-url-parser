@@ -1,0 +1,21 @@
+{
+    "name": "piotrmus/yii2-url-parser",
+    "description": "Yii2 Url Parser",
+    "type": "yii2-extension",
+    "keywords": ["yii2","extension","url-parser"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Piotr Musial",
+            "email": "piotr.mus@gmail.com"
+        }
+    ],
+    "require": {
+        "yiisoft/yii2": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "piotrmus\\urlparser\\": ""
+        }
+    }
+}
