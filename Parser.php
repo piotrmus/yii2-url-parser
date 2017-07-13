@@ -4,6 +4,7 @@ namespace piotrmus\urlparser;
 
 use Yii;
 use yii\base\Component;
+use yii\helpers\VarDumper;
 
 class Parser extends Component
 {
@@ -11,7 +12,7 @@ class Parser extends Component
 
     public static function getResourceDirectory()
     {
-        return Yii::getAlias('@app') . '/runtime/hostname-parser';
+        return __DIR__ . '/resources';
     }
 
     public static function getCacheFile()
@@ -111,10 +112,13 @@ class Parser extends Component
         $topDomain = implode('.', array_reverse($domainNames));
         $mainDomain = $host[0] . '.' . $topDomain;
 
-        return [
-            'domain' => $mainDomain,
-            'topDomain' => $topDomain,
-            'subDomains' => $host,
-        ];
+        $parsedUrl = new ParsedUrl();
+
+        $parsedUrl->url = $hostname;
+        $parsedUrl->domain = $mainDomain;
+        $parsedUrl->topDomain = $topDomain;
+        $parsedUrl->subdomains = $host;
+
+        return $parsedUrl;
     }
 }
